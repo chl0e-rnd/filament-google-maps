@@ -6,7 +6,7 @@
     <div
         x-ignore
         ax-load
-        ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('filament-google-maps-field', 'chl0e-rnd/filament-google-maps') }}"
+        ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('filament-google-maps-field', 'cheesegrits/filament-google-maps') }}"
         x-data="filamentGoogleMapsField({
                     state: $wire.entangle('{{ $getStatePath() }}'),
                     drawingFieldState: $wire.entangle('{{ $getDrawingField() }}'),

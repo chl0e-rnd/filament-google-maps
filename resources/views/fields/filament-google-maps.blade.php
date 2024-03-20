@@ -6,9 +6,10 @@
     <div
         x-ignore
         ax-load
-        ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('filament-google-maps-field', 'cheesegrits/filament-google-maps') }}"
+        ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('filament-google-maps-field', 'chl0e-rnd/filament-google-maps') }}"
         x-data="filamentGoogleMapsField({
                     state: $wire.entangle('{{ $getStatePath() }}'),
+                    drawingFieldState: $wire.entangle('{{ $getDrawingField() }}'),
                     setStateUsing: (path, state) => {
                         return $wire.set(path, state)
                     },
@@ -35,6 +36,7 @@
                     reverseGeocodeFields: @js($getReverseGeocode()),
                     hasReverseGeocodeUsing: @js($getReverseGeocodeUsing()),
                     hasPlaceUpdatedUsing: @js($getPlaceUpdatedUsing()),
+{{--                    hasDrawUpdatedUsing: @js($getDrawUpdatedUsing()),--}}
                     defaultZoom: @js($getDefaultZoom()),
                     types: @js($getTypes()),
                     countries: @js($getCountries()),
@@ -55,17 +57,17 @@
                     circleOptions: @js($getCircleOptions()),
                     rectangleOptions: @js($getRectangleOptions())
                 })"
-        id="{{ $getId() . '-alpine' }}"
-        wire:ignore
+            id="{{ $getId() . '-alpine' }}"
+            wire:ignore
     >
         @if ($isSearchBoxControlEnabled())
-            <input x-ref="pacinput" type="text" placeholder="Search Box" />
+            <input x-ref="pacinput" type="text" placeholder="Search Box"/>
         @endif
 
         <div
-            x-ref="map"
-            class="w-full"
-            style="
+                x-ref="map"
+                class="w-full"
+                style="
                 height: {{ $getHeight() }};
                 min-height: 30vh;
                 z-index: 1 !important;

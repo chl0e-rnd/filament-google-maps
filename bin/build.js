@@ -32,7 +32,7 @@ formComponents.forEach((component) => {
         "process.env.NODE_ENV": shouldWatch ? `'production'` : `'development'`,
       },
       entryPoints: [`resources/js/${component}.js`],
-      outfile: `dist/cheesegrits/filament-google-maps/${component}.js`,
+      outfile: `dist/test/filament-google-maps/${component}.js`,
       bundle: true,
       platform: "neutral",
       mainFields: ["module", "main"],

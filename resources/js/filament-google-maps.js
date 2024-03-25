@@ -156,12 +156,21 @@ export default function filamentGoogleMapsField({
                 ...controls,
             });
 
+
             this.marker = new google.maps.Marker({
                 draggable: draggable,
                 map: this.map,
+                //Cacher le marqueur
+                visible: false,
             });
 
             this.marker.setPosition(this.getCoordinates());
+
+            //Ajout de l'écoute du dragend sur la carte
+            this.map.addListener("dragend", (event) => {
+                //Stockage de la nouvelle position
+                this.state = this.map.getCenter();
+            });
 
             if (clickable) {
                 this.map.addListener("click", (event) => {
